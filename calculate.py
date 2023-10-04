@@ -8,6 +8,9 @@ from PIL import ImageDraw
 import schedule
 from time import sleep
 
+import config
+
+APP_KEY = config.APP_KEY
 
 
 
@@ -117,7 +120,7 @@ def main():
                 lonlatlist.append(lon_lat)
                 lonlat = ' '.join(lonlatlist)
             yahoo_url = "https://map.yahooapis.jp/weather/V1/place?appid={appid}&coordinates={lat_lon}&output={output}&date={date}"
-            yahoo_url = yahoo_url.format(appid="dj00aiZpPThKVm5Wckw5RVRYQyZzPWNvbnN1bWVyc2VjcmV0Jng9OWQ-", lat_lon= lonlat, output="json",
+            yahoo_url = yahoo_url.format(appid=APP_KEY, lat_lon= lonlat, output="json",
                                 date=now1.strftime("%Y%m%d%H%M"))
             yahoo_json = requests.get(yahoo_url).json()
             for k in range(10):
